@@ -1,0 +1,14 @@
+name: gover
+version: 1.0.0
+description: Create and aggregate test coverage reports.
+keywords:
+    - golang
+    - gover
+    - test
+properties:
+    project:
+        type: string
+        required: true
+    report:
+        type: string
+        required: true
