@@ -20,4 +20,4 @@ do
     go test -covermode=count -coverprofile=${cover_path} ${package}
 done
 
-$WERCKER_STEP_ROOT/bin/gover ${base_path}/coverprofile ${report_name}
+gover ${base_path}/coverprofile ${report_name}
