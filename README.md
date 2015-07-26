@@ -5,8 +5,8 @@
 [Wercker][wercker] step for [modocache/gover][gover].
 Create and aggregate test coverage reports.
 
-[wercker][https://app.wercker.com/]
-[gover][https://github.com/modocache/gover]
+[wercker]: https://app.wercker.com/
+[gover]: https://github.com/modocache/gover
 
 
 ## Usage
@@ -25,7 +25,7 @@ build:
 ## Properties
 
 - `project`: the path of the base package to be tested
-- `report`: the output name of the aggregated coverage report.
+- `report`: the output name of the aggregated coverage report
 
 
 ## License
