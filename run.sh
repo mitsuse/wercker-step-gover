@@ -1,7 +1,7 @@
 #!/bin/bash
 
-report_name=${GOVER_REPORT}
-base_package=${GOVER_PROJECT}
+report_name=${WERCKER_GOVER_REPORT}
+base_package=${WERCKER_GOVER_PROJECT}
 base_path=${GOPATH}/src/${base_package}
 
 go get github.com/modocache/gover
