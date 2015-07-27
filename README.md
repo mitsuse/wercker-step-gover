@@ -17,7 +17,7 @@ Add the step to the build steps of `wercker.yml` as follows:
 build:
     steps:
         - mitsuse/gover:
-            project: "github.com/misuse/matrix-go"
+            project: "github.com/mitsuse/matrix-go"
             report: "coverage.txt"
 ```
 
