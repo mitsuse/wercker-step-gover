@@ -6,9 +6,9 @@ keywords:
     - gover
     - test
 properties:
-    project:
+    exclude:
         type: string
-        required: true
+        required: false
     report:
         type: string
         required: true

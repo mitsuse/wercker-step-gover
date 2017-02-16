@@ -1,8 +1,7 @@
 #!/bin/bash
 
 report_name=${WERCKER_GOVER_REPORT}
-base_package=${WERCKER_GOVER_PROJECT}
-base_path=${GOPATH}/src/${base_package}
+exclude=${WERCKER_GOVER_EXCLUDE}
 coverprofile_path=/var/tmp/coverprofile-$(date +%s)
 
 go get github.com/modocache/gover
@@ -14,11 +13,21 @@ else
     rm ${coverprofile_path}/*.coverprofile
 fi
 
-for package in $(go list ${base_package}/...)
-do
-    cover_name=$(echo ${package} | sed -e "s/\//__/g").coverprofile
-    cover_path=${coverprofile_path}/${cover_name}
-    go test -covermode=count -coverprofile=${cover_path} ${package}
-done
 
-gover ${coverprofile_path} ${report_name}
+if [ -n "$WERCKER_GOVER_EXCLUDE" ]; then
+    for package in $(go list ./... | grep -vE "$WERCKER_GOVER_EXCLUDE")
+    do
+        cover_name=$(echo ${package} | sed -e "s/\//__/g").coverprofile
+        cover_path=${coverprofile_path}/${cover_name}
+        go test -covermode=count -coverprofile=${cover_path} ${package}
+    done
+    gover ${coverprofile_path} ${report_name}
+else
+    for package in $(go list ./...)
+    do
+        cover_name=$(echo ${package} | sed -e "s/\//__/g").coverprofile
+        cover_path=${coverprofile_path}/${cover_name}
+        go test -covermode=count -coverprofile=${cover_path} ${package}
+    done
+    gover ${coverprofile_path} ${report_name}
+fi
