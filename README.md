@@ -17,14 +17,14 @@ Add the step to the build steps of `wercker.yml` as follows:
 build:
     steps:
         - mitsuse/gover:
-            project: "github.com/mitsuse/matrix-go"
+            exclude: "vendor"
             report: "coverage.txt"
 ```
 
 
 ## Properties
 
-- `project`: the path of the base package to be tested
+- `exclude`: (optional) Exclude certain files. Uses grep -ve to do the exclude
 - `report`: the output name of the aggregated coverage report
 
 
