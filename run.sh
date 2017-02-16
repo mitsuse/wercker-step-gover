@@ -1,7 +1,6 @@
 #!/bin/bash
 
 report_name=${WERCKER_GOVER_REPORT}
-exclude=${WERCKER_GOVER_EXCLUDE}
 coverprofile_path=/var/tmp/coverprofile-$(date +%s)
 
 go get github.com/modocache/gover
