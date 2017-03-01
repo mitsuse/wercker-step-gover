@@ -14,19 +14,15 @@ fi
 
 
 if [ -n "$WERCKER_GOVER_EXCLUDE" ]; then
-    for package in $(go list ./... | grep -vE "$WERCKER_GOVER_EXCLUDE")
-    do
-        cover_name=$(echo ${package} | sed -e "s/\//__/g").coverprofile
-        cover_path=${coverprofile_path}/${cover_name}
-        go test -covermode=count -coverprofile=${cover_path} ${package}
-    done
-    gover ${coverprofile_path} ${report_name}
+    GO_LIST=$(go list ./... | grep -vE "vendor|$WERCKER_GOVER_EXCLUDE")
 else
-    for package in $(go list ./...)
-    do
-        cover_name=$(echo ${package} | sed -e "s/\//__/g").coverprofile
-        cover_path=${coverprofile_path}/${cover_name}
-        go test -covermode=count -coverprofile=${cover_path} ${package}
-    done
-    gover ${coverprofile_path} ${report_name}
+    GO_LIST=$(go list ./... | grep -vE "vendor")
 fi
+
+for package in ${GO_LIST}
+do
+    cover_name=$(echo ${package} | sed -e "s/\//__/g").coverprofile
+    cover_path=${coverprofile_path}/${cover_name}
+    go test -covermode=count -coverprofile=${cover_path} ${package}
+done
+gover ${coverprofile_path} ${report_name}
