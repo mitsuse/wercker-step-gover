@@ -17,14 +17,14 @@ Add the step to the build steps of `wercker.yml` as follows:
 build:
     steps:
         - mitsuse/gover:
-            exclude: "vendor"
+            exclude: "pb"
             report: "coverage.txt"
 ```
 
 
 ## Properties
 
-- `exclude`: (optional) Exclude certain files. Uses grep -ve to do the exclude
+- `exclude`: Exclude certain files. Uses grep -ve to do the exclude(vendor is default exclude)
 - `report`: the output name of the aggregated coverage report
 
 
