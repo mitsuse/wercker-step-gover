@@ -8,7 +8,7 @@ keywords:
 properties:
     exclude:
         type: string
-        required: false
+        required: true
     report:
         type: string
         required: true
