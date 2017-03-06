@@ -24,7 +24,7 @@ build:
 
 ## Properties
 
-- `exclude`: (optional)Exclude certain files. Uses grep -ve to do the exclude(vendor is exclude)
+- `exclude`: (optional) the regular-expression for `grep -vE`. This is used to exclude files from calculation of test coverage
 - `report`: the output name of the aggregated coverage report
 
 

@@ -14,9 +14,9 @@ fi
 
 
 if [ -n "$WERCKER_GOVER_EXCLUDE" ]; then
-    GO_LIST=$(go list ./... | grep -vE "vendor|$WERCKER_GOVER_EXCLUDE")
+    GO_LIST=$(go list ./... | grep -vE "/vendor/|$WERCKER_GOVER_EXCLUDE")
 else
-    GO_LIST=$(go list ./... | grep -vE "vendor")
+    GO_LIST=$(go list ./... | grep -vE "/vendor/")
 fi
 
 for package in ${GO_LIST}
